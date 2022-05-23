@@ -1,0 +1,12 @@
+import React from 'react';
+
+const MyReview = () => {
+    return (
+        <div>
+            <h2>Hello from My Review</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab temporibus autem distinctio tempore iste magnam, similique est incidunt consequuntur dolore sint fugit, voluptas nesciunt sit sequi earum quo quam blanditiis labore. Corrupti autem nam laborum corporis impedit cupiditate minus dolores. Expedita inventore iure ad commodi dolore aliquam repudiandae dignissimos voluptatibus et eos vero ipsam debitis quas, ab reiciendis facere corrupti molestiae ea repellat reprehenderit aliquid odio tempora ratione. Consectetur non tenetur modi eligendi at, aliquam delectus ducimus, sapiente aliquid est ut beatae suscipit totam cumque, itaque provident sint! Necessitatibus fuga cupiditate at asperiores, repellat similique nam ab ut doloribus tempore eos sit, id quos! Dignissimos deserunt quisquam doloribus ea. Ad a quae vero adipisci fugit et illum eos assumenda, quidem nihil eligendi? Repellat dolore ex nihil ipsam quod labore eveniet voluptate incidunt magni praesentium voluptas autem quo ab officiis possimus inventore, nemo omnis excepturi sed voluptates exercitationem fugit quidem a aliquid? Ea ratione asperiores rem. Hic odio nobis voluptatibus aut sequi, nisi quam! Voluptatibus cum quam eligendi deserunt qui libero itaque veritatis, voluptate soluta numquam nostrum iusto, voluptatem eaque deleniti corporis optio accusantium praesentium, facere quo. Voluptates hic eos voluptatum quo voluptate nobis temporibus rem velit ea provident ipsa ullam, accusantium vel enim, nemo incidunt ducimus veritatis sit obcaecati, cumque nulla possimus quia autem? In animi laborum recusandae voluptatem expedita ad alias, suscipit praesentium quaerat sapiente quisquam esse exercitationem, quas veritatis. Dolores cumque magni odio. Consectetur, possimus. Dolore voluptatibus quos molestias aliquam explicabo iusto voluptates facere harum magni veniam ab reprehenderit dolorem quae sit consequuntur, ducimus beatae cumque similique. Nisi, repudiandae enim? Aliquam error fuga laudantium quas nisi magni at numquam veniam minus eos deserunt laborum, provident corporis aperiam nam, accusantium illo cum, repellendus ratione! Odio cumque assumenda incidunt! Vitae modi accusantium beatae, recusandae magnam illum ut fuga quod ea.</p>
+        </div>
+    );
+};
+
+export default MyReview;

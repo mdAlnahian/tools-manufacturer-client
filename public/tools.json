@@ -1,0 +1,56 @@
+[
+  {
+    "_id": 1,
+    "name": "Travel Tool Kit",
+    "price": 1500,
+    "availableQuantity": 4000,
+    "minimumOrder": 10,
+    "imageLink": "https://i.ibb.co/7Jp9JLW/img1-removebg-preview.png",
+    "description": "This is used for the car riders if they any issue in their jouney so that they can solve thier vehicles problem."
+  },
+  {
+    "_id": 2,
+    "name": "Tool Check Plus",
+    "price": 1600,
+    "availableQuantity": 9000,
+    "minimumOrder": 20,
+    "imageLink": "https://i.ibb.co/Vg0N9vr/img2-removebg-preview-1.png",
+    "description": "This is used for the car riders if they any issue in their jouney so that they can solve thier vehicles problem."
+  },
+  {
+    "_id": 3,
+    "name": "Mini-ratChet Set",
+    "price": 180,
+    "availableQuantity": 10000,
+    "minimumOrder": 15,
+    "imageLink": "https://i.ibb.co/w7TpzWZ/img3-removebg-preview.png",
+    "description": "This is used for the car riders if they any issue in their jouney so that they can solve thier vehicles problem."
+  },
+  {
+    "_id": 4,
+    "name": "Dust Cap",
+    "price": 150,
+    "availableQuantity": 8000,
+    "minimumOrder": 20,
+    "imageLink": "https://i.ibb.co/nP2v1mL/img4-removebg-preview.png",
+    "description": "This is used for the car riders if they any issue in their jouney so that they can solve thier vehicles problem."
+  },
+  {
+    "_id": 5,
+    "name": "Bleeder Valve",
+    "price": 400,
+    "availableQuantity": 6000,
+    "minimumOrder": 15,
+    "imageLink": "https://i.ibb.co/rHBgmz8/img5-removebg-preview.png",
+    "description": "This is used for the car riders if they any issue in their jouney so that they can solve thier vehicles problem."
+  },
+  {
+    "_id": 6,
+    "name": "Disk Brake Piston Spreader",
+    "price": 100,
+    "availableQuantity": 7000,
+    "minimumOrder": 30,
+    "imageLink": "https://i.ibb.co/BG85z7c/img6-removebg-preview.png",
+    "description": "This is used for the car riders if they any issue in their jouney so that they can solve thier vehicles problem."
+  }
+]
