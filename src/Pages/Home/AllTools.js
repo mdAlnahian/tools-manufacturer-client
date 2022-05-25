@@ -6,9 +6,10 @@ const AllTools = () => {
     const [tools , setTools] = useState([]);
 
     useEffect(()=>{
-        fetch('tools.json')
-        .then(res => res.json())
-        .then(data => setTools(data))
+        // fetch('tools.json')
+        fetch("http://localhost:5000/tool")
+          .then((res) => res.json())
+          .then((data) => setTools(data));
     },[])
 
     return (

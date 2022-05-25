@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Tools from "../Home/Tools";
 
 const Purchase = () => {
+
+  const [tools, setTools] = useState([]);
+
+  useEffect(() => {
+    // fetch('tools.json')
+    fetch("http://localhost:5000/tool")
+      .then((res) => res.json())
+      .then((data) => setTools(data));
+  }, []);
+
   return (
     <div className="h-screen lg:px-20 px-12">
-      <h1 className="mt-24"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit odit qui modi suscipit tempora dolore odio adipisci veritatis repellendus labore excepturi est sapiente soluta, voluptatem iste, eius esse, neque cum. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, consequuntur nostrum! Omnis, totam! Iusto cupiditate facilis ea, amet nisi distinctio at. Laudantium, assumenda quidem debitis sed nobis quia sint temporibus, illum quam amet mollitia illo nemo. Quis rem, porro eius praesentium impedit expedita neque inventore, minus maiores, magnam labore laudantium placeat hic fuga pariatur ab. Quos minima molestiae cupiditate mollitia atque beatae numquam officia impedit accusantium. Id, eveniet. Quam veritatis dolorem voluptatibus, maiores totam eveniet cum placeat quae error cumque facere numquam consectetur sit magni libero sint asperiores inventore cupiditate ipsa a mollitia ratione et maxime! Repellendus perferendis vel excepturi? </h1>
+      <div className="bg-orange-200 pb-24 w-full">
+        <h2 className="uppercase text-3xl text-center pt-24 pb-24">
+          Running Popular Products!!
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-24 gap-6 lg:w-3/4 w-full lg:px-24 px-12 mx-auto">
+          {tools.map((tool) => (
+            <Tools key={tool._id} tool={tool}></Tools>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
