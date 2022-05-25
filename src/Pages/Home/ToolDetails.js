@@ -28,10 +28,12 @@ const ToolDetails = () => {
         const phone = e.target.phone.value;
         let availableQuantity = e.target.availableQuantity.value;
         if (availableQuantity < tool.minimumOrder) {
-          alert(`You Cant order less than ${tool.minimumOrder} item`);
+          return (
+          alert(`You Cant order less than ${tool.minimumOrder} item`));
           // availableQuantity = ' ';
         } else if (availableQuantity > tool.availableQuantity) {
-          alert(`You Cant order more than ${tool.availableQuantity} item`);
+          return(
+          alert(`You Cant order more than ${tool.availableQuantity} item`));
           // availableQuantity = ' ';
         }
         //lets handle price
