@@ -1,32 +1,20 @@
 [
     {
-        "id":1,
-        "name":"Katherine Langford",
-        "description":"i loves to buy so much product from Bro limited.They provide the best service all over the country."
+      "name": "Katherine Langford",
+      "description": "i loves to buy so much product from Bro limited.They provide the best service all over the country.",
+      "img": "https://i.ibb.co/wLs707G/people2.png",
+      "ratings": "⭐⭐⭐⭐⭐"
     },
     {
-        "id":2,
-        "name":"Jennifer Lawrence",
-        "description":"i loves to buy so much product from Bro limited.They provide the best service all over the country."
+      "name": "Batista dohn",
+      "description": "i loves to buy so much product from Bro limited.They provide the best service all over the country.",
+      "img": "https://i.ibb.co/ZJ2yj9r/people1.png",
+      "ratings": "⭐⭐⭐⭐⭐"
     },
     {
-        "id":3,
-        "name":"John Cena",
-        "description":"i loves to buy so much product from Bro limited.They provide the best service all over the country."
-    },
-    {
-        "id":4,
-        "name":"Bre Larson",
-        "description":"i loves to buy so much product from Bro limited.They provide the best service all over the country."
-    },
-    {
-        "id":5,
-        "name":"Chris Dick",
-        "description":"i loves to buy so much product from Bro limited.They provide the best service all over the country."
-    },
-    {
-        "id":6,
-        "name":"Amber Heard",
-        "description":"i loves to buy so much product from Bro limited.They provide the best service all over the country."
+      "name": "Jennifer Lawrence",
+      "description": "i loves to buy so much product from Bro limited.They provide the best service all over the country.",
+      "img": "https://i.ibb.co/BVwqBwr/people3.png",
+      "ratings": "⭐⭐⭐⭐⭐"
     }
 ]

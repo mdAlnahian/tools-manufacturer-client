@@ -1,11 +1,119 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+import Loading from '../../Shared/Loading';
 
 const MyReview = () => {
+     const [user, loading] = useAuthState(auth);
+    const navigate = useNavigate();
+    //trying to load spinners
+      if (loading) {
+        return <Loading></Loading>;
+      }
+
+    const handleConfirmOrder =(e)=>{
+        e.preventDefault();
+        const name = e.target.name.value ; 
+        const description = e.target.description.value ; 
+        const img = e.target.img.value ;
+        let ratings = e.target.ratings.value ; 
+        if(ratings.length > 5){
+            return (
+                alert('Star ratings cannot be more than 5')
+            )
+        }
+
+        let addedReview = { name , description , ratings , img }
+        console.log(addedReview);
+
+        // Now applying the post method for showing data
+
+        const url = `http://localhost:5000/review`;
+        fetch( url , {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(addedReview),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              alert(`${user.displayName} ,Your Review Added Successfully 😀`);
+              navigate(`/`);
+            }
+            //  else {
+            //   alert(`${user.displayName} ,You have already Submitted your Review`);
+            // }
+          });
+
+
+    }
     return (
-        <div>
-            <h2>Hello from My Review</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab temporibus autem distinctio tempore iste magnam, similique est incidunt consequuntur dolore sint fugit, voluptas nesciunt sit sequi earum quo quam blanditiis labore. Corrupti autem nam laborum corporis impedit cupiditate minus dolores. Expedita inventore iure ad commodi dolore aliquam repudiandae dignissimos voluptatibus et eos vero ipsam debitis quas, ab reiciendis facere corrupti molestiae ea repellat reprehenderit aliquid odio tempora ratione. Consectetur non tenetur modi eligendi at, aliquam delectus ducimus, sapiente aliquid est ut beatae suscipit totam cumque, itaque provident sint! Necessitatibus fuga cupiditate at asperiores, repellat similique nam ab ut doloribus tempore eos sit, id quos! Dignissimos deserunt quisquam doloribus ea. Ad a quae vero adipisci fugit et illum eos assumenda, quidem nihil eligendi? Repellat dolore ex nihil ipsam quod labore eveniet voluptate incidunt magni praesentium voluptas autem quo ab officiis possimus inventore, nemo omnis excepturi sed voluptates exercitationem fugit quidem a aliquid? Ea ratione asperiores rem. Hic odio nobis voluptatibus aut sequi, nisi quam! Voluptatibus cum quam eligendi deserunt qui libero itaque veritatis, voluptate soluta numquam nostrum iusto, voluptatem eaque deleniti corporis optio accusantium praesentium, facere quo. Voluptates hic eos voluptatum quo voluptate nobis temporibus rem velit ea provident ipsa ullam, accusantium vel enim, nemo incidunt ducimus veritatis sit obcaecati, cumque nulla possimus quia autem? In animi laborum recusandae voluptatem expedita ad alias, suscipit praesentium quaerat sapiente quisquam esse exercitationem, quas veritatis. Dolores cumque magni odio. Consectetur, possimus. Dolore voluptatibus quos molestias aliquam explicabo iusto voluptates facere harum magni veniam ab reprehenderit dolorem quae sit consequuntur, ducimus beatae cumque similique. Nisi, repudiandae enim? Aliquam error fuga laudantium quas nisi magni at numquam veniam minus eos deserunt laborum, provident corporis aperiam nam, accusantium illo cum, repellendus ratione! Odio cumque assumenda incidunt! Vitae modi accusantium beatae, recusandae magnam illum ut fuga quod ea.</p>
+      <div>
+        <h2 className="text-2xl text-center font-bold pb-6">
+          Dont forget to Add your Review😀
+        </h2>
+        <div className="flex justify-center item-center">
+          <form onSubmit={handleConfirmOrder}>
+            <div>
+              <label class="label">
+                <span class="label-text">What is your name?</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={user.displayName ? user.displayName : "RandomUser"}
+                class="input input-bordered input-primary w-full max-w-xs text-xl text-accent font-bold"
+                readOnly
+              />
+            </div>
+            <div>
+              <label class="label">
+                <span class="label-text">Description</span>
+              </label>
+              <input
+                type="text"
+                name="description"
+                placeholder="Add description here"
+                // value={user?.email || ""}
+                class="input input-bordered input-primary w-full max-w-xs text-accent font-bold mb-2"
+              />
+            </div>
+
+            <div>
+              <label class="label">
+                <span class="label-text">Ratings</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Use star imoji by pressing (windows +;)"
+                name="ratings"
+                class="input input-bordered input-primary w-full max-w-xs text-accent font-bold mb-2"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="label">
+                <span class="label-text">Image</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Add your image link here"
+                name="img"
+                class="input input-bordered input-primary w-full max-w-xs text-accent font-bold mb-2"
+              />
+            </div>
+            <br />
+            <div>
+              <button class="btn w-2/4">Add Review</button>
+            </div>
+          </form>
         </div>
+      </div>
     );
 };
 

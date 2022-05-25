@@ -2,16 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../../Shared/Loading';
 
 const ToolDetails = () => {
 
       const navigate = useNavigate();
 
-      const [user] = useAuthState(auth);
+      const [user, loading] = useAuthState(auth);
 
       const { id } = useParams();
 
       const [tool, setTool] = useState([]);
+
 
       useEffect(() => {
         const url = `http://localhost:5000/tool/${id}`;
@@ -19,6 +21,10 @@ const ToolDetails = () => {
           .then((res) => res.json())
           .then((data) => setTool(data));
       }, []);
+
+      if (loading) {
+        return <Loading></Loading>;
+      }
 
       const handleConfirmOrder = (e) =>{
         e.preventDefault();
@@ -30,11 +36,9 @@ const ToolDetails = () => {
         if (availableQuantity < tool.minimumOrder) {
           return (
           alert(`You Cant order less than ${tool.minimumOrder} item`));
-          // availableQuantity = ' ';
         } else if (availableQuantity > tool.availableQuantity) {
           return(
           alert(`You Cant order more than ${tool.availableQuantity} item`));
-          // availableQuantity = ' ';
         }
         //lets handle price
         const price = e.target.price.value * availableQuantity;
@@ -56,8 +60,10 @@ const ToolDetails = () => {
             if (data.success) {
               alert(`Order Recieved Successfully for ${tool.name}`);
               navigate(`/purchase`);
-            } else {
-              alert(`You have already placed order for ${tool.name}`);
+            } 
+            else {
+              return (
+              alert(`You have already placed order for ${tool.name}`));
             }
           });
 
@@ -106,11 +112,9 @@ const ToolDetails = () => {
                   </label>
                   <input
                     type="text"
-                    name='name'
-                    placeholder='Name'
-                    value={
-                      user.displayName ? user.displayName : "RandomUser"
-                    }
+                    name="name"
+                    placeholder="Name"
+                    value={user.displayName ? user.displayName : "RandomUser"}
                     class="input input-bordered input-primary w-full max-w-xs text-xl text-accent font-bold"
                     readOnly
                   />
@@ -121,8 +125,8 @@ const ToolDetails = () => {
                   </label>
                   <input
                     type="text"
-                    name='email'
-                    placeholder='Email'
+                    name="email"
+                    placeholder="Email"
                     value={user?.email || ""}
                     class="input input-bordered input-primary w-full max-w-xs text-accent font-bold mb-2"
                     readOnly
@@ -136,7 +140,7 @@ const ToolDetails = () => {
                   <input
                     type="text"
                     placeholder="Address"
-                    name='address'
+                    name="address"
                     class="input input-bordered input-primary w-full max-w-xs text-accent font-bold mb-2"
                     required
                   />
@@ -149,7 +153,7 @@ const ToolDetails = () => {
                   <input
                     type="number"
                     placeholder="Phone"
-                    name='phone'
+                    name="phone"
                     class="input input-bordered input-primary w-full max-w-xs text-accent font-bold mb-2"
                   />
                 </div>
@@ -161,7 +165,7 @@ const ToolDetails = () => {
                   <input
                     // onBlur={handleOrderQuantity}
                     type="number"
-                    placeholder="Number of product you purchase"
+                    placeholder={tool.minimumOrder}
                     name="availableQuantity"
                     class="input input-bordered input-primary w-full max-w-xs text-accent font-bold "
                   />
@@ -179,15 +183,18 @@ const ToolDetails = () => {
                     placeholder="Prices of Your product"
                     name="price"
                     value={tool.price}
-                    class="input input-bordered input-primary w-full max-w-xs text-accent font-bold mb-2"
+                    class="input input-bordered input-primary w-full max-w-xs text-accent font-bold"
                   />
                   <label class="label">
-                    <span class="label-text"></span>
+                    <span class="label-text mb-4">
+                      Price will be updated based on Quantiy,{" "}
+                      <span>Check dashboard👍</span>{" "}
+                    </span>
                   </label>
                 </div>
 
                 <div>
-                  <button class="btn w-1/4">Confirm Order</button>
+                  <button class="btn w-1/2 lg:w-1/4">Confirm Order</button>
                 </div>
               </form>
             </div>
