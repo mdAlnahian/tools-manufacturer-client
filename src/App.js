@@ -17,6 +17,7 @@ import Footer from './Shared/Footer';
 import Navbar from './Shared/Navbar';
 import NotFound from './Shared/NotFound';
 import "react-toastify/dist/ReactToastify.css";
+import Users from './Pages/Dashboard/Users';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route index element={<MyOrder></MyOrder>}></Route>
           <Route path='review' element={<MyReview></MyReview>}></Route>
           <Route path='profile' element={<MyProfile></MyProfile>}></Route>
+          <Route path='users' element={<Users></Users>}></Route>
         </Route>
         <Route path="login" element={<Login></Login>}></Route>
         <Route path="register" element={<Register></Register>}></Route>

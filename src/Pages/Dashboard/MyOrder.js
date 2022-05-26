@@ -22,11 +22,12 @@ const MyOrder = () => {
         }
       },[]);
 
-      const  id   = useParams();
-      const handleDelete = (id) =>{
+      const { id } = useParams();
+
+      const handleDelete = ( id ) =>{
           const proceed =window.confirm('Are you Sure ?');
           if(proceed){
-            const url = `http://localhost:5000/review/${id}`;
+            const url = `http://localhost:5000/order/${id}`;
             fetch( url , {
               method:"DELETE"
             })

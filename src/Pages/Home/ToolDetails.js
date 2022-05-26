@@ -78,11 +78,7 @@ const ToolDetails = () => {
               });
             }
           });
-
-        // navigate(`/purchase`);
       }
-
-      
 
 
   return (
@@ -94,7 +90,7 @@ const ToolDetails = () => {
           <div className="flex justify-center items-center">
             <div class="card lg:w-96 sm:max-w-sm bg-orange-100 shadow-xl">
               <figure>
-                <img src={tool.imageLink} alt="Shoes" />
+                <img src={tool.imageLink} alt="img" />
               </figure>
               <div class="card-body">
                 <h2 class="card-title">
@@ -115,7 +111,7 @@ const ToolDetails = () => {
           <div className="flex justify-center items-center pt-6 pl-10 pr-2">
             <div className="container mx-auto pb-16">
               <h2 className="text-3xl mb-6">
-                Place Your Order Here For : {tool.name}
+                Confirm Your Order Here For : <span className='font-bold text-green-700'>{tool.name}</span>
               </h2>
               <form onSubmit={handleConfirmOrder}>
                 <div>

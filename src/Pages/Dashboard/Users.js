@@ -9,11 +9,11 @@ const Users = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("https://secret-dusk-46242.herokuapp.com/user", {
+    fetch("http://localhost:5000/order/user", {
       method: "GET",
-    //   headers: {
-    //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    //   },
+      //   headers: {
+      //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      //   },
     }).then((res) => res.json())
   );
   if (isLoading) {

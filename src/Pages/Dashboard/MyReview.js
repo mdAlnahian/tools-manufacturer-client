@@ -57,7 +57,7 @@ const MyReview = () => {
     }
     return (
       <div>
-        <h2 className="text-2xl text-center font-bold pb-6">
+        <h2 className="text-2xl text-center pb-6">
           Dont forget to Add your Review😀
         </h2>
         <div className="flex justify-center item-center">
