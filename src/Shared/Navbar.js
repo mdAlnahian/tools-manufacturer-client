@@ -36,7 +36,7 @@ const Navbar = () => {
               tabindex="0"
               class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li className=''>
+              <li className="">
                 <NavLink to="/">Home</NavLink>
               </li>
               <li>
@@ -53,7 +53,7 @@ const Navbar = () => {
               </li>
               <li>
                 {user && (
-                  <h1>{user.displayName ? user.displayName : "User"}</h1>
+                  <h1>{user.displayName ? user.displayName : "Random User"}</h1>
                 )}
               </li>
               <li>
@@ -88,7 +88,9 @@ const Navbar = () => {
             </li>
             <li>{user ? <NavLink to="/dashboard">Dashboard</NavLink> : ""}</li>
             <li>
-              {user && <h1>{user.displayName ? user.displayName : "User"}</h1>}
+              {user && (
+                <h1>{user.displayName ? user.displayName : "Random User"}</h1>
+              )}
             </li>
             <li>
               {user ? (

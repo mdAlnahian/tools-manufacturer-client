@@ -43,9 +43,7 @@ const MyReview = () => {
               alert(`${user.displayName} ,Your Review Added Successfully 😀`);
               navigate(`/`);
             }
-            //  else {
-            //   alert(`${user.displayName} ,You have already Submitted your Review`);
-            // }
+          
           });
 
 
