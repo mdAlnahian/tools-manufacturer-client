@@ -173,7 +173,7 @@ const ToolDetails = () => {
                   <input
                     // onBlur={handleOrderQuantity}
                     type="number"
-                    placeholder={tool.minimumOrder}
+                    placeholder={" Minimum orderable quantity is " + tool.minimumOrder} 
                     name="availableQuantity"
                     class="input input-bordered input-primary w-full max-w-xs text-accent font-bold "
                   />
