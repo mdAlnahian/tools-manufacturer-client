@@ -19,7 +19,7 @@ const AllTools = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-24 gap-6 lg:w-3/4 w-full lg:px-24 px-12 mx-auto">
           {
-              tools.map((tool) => (<Tools key={tool._id} tool={tool}></Tools>))
+              tools.slice(-6).map((tool) => (<Tools key={tool._id} tool={tool}></Tools>))
           }
         </div>
       </div>

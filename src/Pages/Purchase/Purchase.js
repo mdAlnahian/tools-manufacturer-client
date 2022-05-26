@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Tools from "../Home/Tools";
 
 const Purchase = () => {
-
   const [tools, setTools] = useState([]);
 
   useEffect(() => {

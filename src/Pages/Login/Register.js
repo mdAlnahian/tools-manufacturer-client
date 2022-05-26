@@ -1,42 +1,43 @@
-
-import React, { useState } from 'react';
+import React, { useState  } from "react";
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link,  Navigate } from 'react-router-dom';
+import { Link , Navigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
+import UseToken from "../../hooks/UseToken";
 
 
 const Register = () => {
-
   // const [name , setName] = useState(" ");
   // const [userName , setUserName] = useState('');
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
 
-  
-
   const [createUserWithEmailAndPassword, user, loading, uError] =
     useCreateUserWithEmailAndPassword(auth);
 
-  const [signInWithGoogle, gUser , gloading, gError] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, gUser, gloading, gError] = useSignInWithGoogle(auth);
 
+  const [token] = UseToken(user || gUser);
 
+  
 
-   if (loading || gloading) {
-     return <Loading></Loading>;
-   }
-
-  if (user || gUser) {
-    return(
-        <Navigate to='/'></Navigate>
-    )
+  if (loading || gloading) {
+    return <Loading></Loading>;
   }
 
-  const handleCreateUser =async  (event) => {
+  if (token) {
+    // console.log(user || gUser);
+    <Navigate to="/"></Navigate>;
+    
+  }
+
+  const handleCreateUser = async (event) => {
     event.preventDefault();
-  
-    await createUserWithEmailAndPassword( email , password , userName);
+
+    await createUserWithEmailAndPassword(email, password, userName);
   };
 
   return (

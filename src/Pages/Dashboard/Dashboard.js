@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
-      <div className="lg:pt-20 pt-14 lg:px-24 bg-base-100">
+      <div className="lg:pt-24 pt-14 lg:px-24 bg-base-100 pb-16">
         <div class="drawer drawer-mobile">
           <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
           <div class="drawer-content px-12 pt-12 bg-base-100">
@@ -31,6 +31,9 @@ const Dashboard = () => {
               </li>
               <li className="mb-2">
                 <NavLink to="/dashboard/users">Users</NavLink>
+              </li>
+              <li className="mb-2">
+                <NavLink to="/dashboard/addproduct">Add Product</NavLink>
               </li>
             </ul>
           </div>

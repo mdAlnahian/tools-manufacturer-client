@@ -18,6 +18,8 @@ import Navbar from './Shared/Navbar';
 import NotFound from './Shared/NotFound';
 import "react-toastify/dist/ReactToastify.css";
 import Users from './Pages/Dashboard/Users';
+import Portfolio from './Pages/Portfolio';
+import AddProduct from './Pages/Dashboard/AddProduct';
 
 function App() {
   return (
@@ -45,9 +47,11 @@ function App() {
           <Route path='review' element={<MyReview></MyReview>}></Route>
           <Route path='profile' element={<MyProfile></MyProfile>}></Route>
           <Route path='users' element={<Users></Users>}></Route>
+          <Route path='addproduct' element={<AddProduct></AddProduct>}></Route>
         </Route>
         <Route path="login" element={<Login></Login>}></Route>
         <Route path="register" element={<Register></Register>}></Route>
+        <Route path='portfolio' element={<Portfolio></Portfolio>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
