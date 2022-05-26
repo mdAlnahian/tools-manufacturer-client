@@ -1,6 +1,6 @@
 import React, { useState  } from "react";
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link , Navigate } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
 import UseToken from "../../hooks/UseToken";
@@ -22,7 +22,7 @@ const Register = () => {
 
   const [token] = UseToken(user || gUser);
 
-  
+   const navigate = useNavigate();
 
   if (loading || gloading) {
     return <Loading></Loading>;
@@ -30,7 +30,8 @@ const Register = () => {
 
   if (token) {
     // console.log(user || gUser);
-    <Navigate to="/"></Navigate>;
+    // 
+    navigate('/')
     
   }
 
