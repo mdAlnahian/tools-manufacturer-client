@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
+import Profile from './Profile';
 
 const MyProfile = () => {
+
+    // const {id} =useParams();
+
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
 
+    const [profile, setProfile] = useState();
+     useEffect(() => {
+       fetch(`http://localhost:5000/userinfo`)
+         .then((res) => res.json())
+         .then((data) => {
+          //  console.log(data);
+           setProfile(data);
+         });
+     }, []);
+     
     if(loading){
       return <Loading></Loading>
     }
 
+   
     const handleUserInfo =(e)=>{
         e.preventDefault();
         const education = e.target.education.value;
@@ -23,8 +39,8 @@ const MyProfile = () => {
         console.log(updateInfo);
 
         //appliying PUT method to update or add the extra infos of user
-           const url = `http://localhost:5000/review`;
-           fetch(url, {
+           const url = `http://localhost:5000/userinfo`;
+           fetch( url , {
              method: "PUT",
              headers: {
                "content-type": "application/json",
@@ -33,14 +49,16 @@ const MyProfile = () => {
            })
              .then((res) => res.json())
              .then((data) => {
-                 alert(
-                   `${user?.displayName} ,Your Information Added Successfully 😀`
+               console.log(data);
+                 toast.success(
+                   `${user?.displayName} ,Your Information Added Successfully 😀`,
+                   {
+                     position: toast.POSITION.TOP_CENTER,
+                   }
                  );
-                 navigate(`/dashboard`);
+                 navigate(`/`);
                }
              );
-
-
 
     }
 
@@ -58,14 +76,19 @@ const MyProfile = () => {
             This is my Email address :{" "}
             <span className="font-bold">{user?.email}</span>
           </h2>
-          <h1 className="text-2xl mb-4">
+          {/* <h1 className="text-2xl mb-4">
             {" "}
             If you want you can add the information mentioned below 💥
-          </h1>
-          <h2>My Location is : </h2>
-          <h2> I am studying at : </h2>
-          <h2> My Linkdin Profile Link is : </h2>
-          <h2> My phone number is : </h2>
+          </h1> */}
+          <div>
+          {
+            profile?.map(p => <Profile key={p._id} p={p}></Profile>)
+          //     <h2>My Location is : </h2>
+          // <h2> I am studying at : </h2>
+          // <h2> My Linkdin Profile Link is : </h2>
+          // <h2> My phone number is : </h2>
+          }
+          </div>
         </div>
         <div className="pt-12 lg:pt-0">
           <h2 className="text-2xl text-center font-bold pb-6">

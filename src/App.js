@@ -16,6 +16,7 @@ import RequireAuth from './Pages/Login/RequireAuth';
 import Footer from './Shared/Footer';
 import Navbar from './Shared/Navbar';
 import NotFound from './Shared/NotFound';
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
 
@@ -40,8 +41,14 @@ const MyReview = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.success) {
-              alert(`${user.displayName} ,Your Review Added Successfully 😀`);
+              toast.success(
+                `${user.displayName} ,Your Review Added Successfully 😀`,
+                {
+                  position: toast.POSITION.TOP_CENTER,
+                }
+              );
               navigate(`/`);
+           
             }
           
           });

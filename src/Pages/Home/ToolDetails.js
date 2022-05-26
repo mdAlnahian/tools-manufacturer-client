@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
 
@@ -34,11 +35,19 @@ const ToolDetails = () => {
         const phone = e.target.phone.value;
         let availableQuantity = e.target.availableQuantity.value;
         if (availableQuantity < tool.minimumOrder) {
-          return (
-          alert(`You Cant order less than ${tool.minimumOrder} item`));
+          return toast.error(
+            `You Cant order less than ${tool.minimumOrder} item`,
+            {
+              position: toast.POSITION.TOP_CENTER,
+            }
+          );
         } else if (availableQuantity > tool.availableQuantity) {
-          return(
-          alert(`You Cant order more than ${tool.availableQuantity} item`));
+          return toast.error(
+            `You Cant order more than ${tool.availableQuantity} item`,
+            {
+              position: toast.POSITION.TOP_CENTER,
+            }
+          );
         }
         //lets handle price
         const price = e.target.price.value * availableQuantity;
@@ -58,12 +67,15 @@ const ToolDetails = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.success) {
-              alert(`Order Recieved Successfully for ${tool.name}`);
+              toast.success(`Order Recieved Successfully for ${tool.name}`, {
+                position: toast.POSITION.TOP_CENTER,
+              });
               navigate(`/purchase`);
             } 
             else {
-              return (
-              alert(`You have already placed order for ${tool.name}`));
+              return toast.error(`You have already placed order for ${tool.name}`, {
+                position: toast.POSITION.TOP_CENTER,
+              });
             }
           });
 

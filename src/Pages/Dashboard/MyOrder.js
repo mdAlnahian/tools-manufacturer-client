@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyOrder = () => {
@@ -19,7 +20,24 @@ const MyOrder = () => {
             .then(res => res.json())
             .then(data => setMyOrders(data))
         }
-      },[])
+      },[]);
+
+      const  id   = useParams();
+      const handleDelete = (id) =>{
+          const proceed =window.confirm('Are you Sure ?');
+          if(proceed){
+            const url = `http://localhost:5000/review/${id}`;
+            fetch( url , {
+              method:"DELETE"
+            })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data);
+              const rest = myOrders.filter((item) => item._id !== id);
+              setMyOrders(rest);
+            });
+          }
+      }
 
 
     return (
@@ -33,6 +51,7 @@ const MyOrder = () => {
               <th>Name</th>
               <th>email</th>
               <th>price</th>
+              <th>Cancel Order</th>
             </tr>
           </thead>
           <tbody>
@@ -42,7 +61,8 @@ const MyOrder = () => {
                      <th>{index + 1}</th>
                         <td>{myOrder.name}</td>
                         <td>{myOrder.email}</td>
-                        <td>{myOrder.price}</td>
+                        <td>${myOrder.price}</td>
+                        <td> <button onClick={()=>handleDelete(myOrder._id)} className='btn btn-xs btn-warning'>Cancel Order</button> </td>
                         {/* <td>{myOrder.treatment}</td> */}
                              
                 </tr>)
