@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 // import { useQuery } from 'react-query';
-import Loading from '../../Shared/Loading';
-import UserRow from './UserRow';
+import Loading from "../../Shared/Loading";
+import UserRow from "./UserRow";
 
 const Users = () => {
-
-
-      const [users, setUsers, refetch , isLoading] = useState([]);
-      useEffect(() => {
-        fetch("http://localhost:5000/user")
-          .then((res) => res.json())
-          .then((data) => setUsers(data));
-      }, []);
+  const [users, setUsers, refetch, isLoading] = useState([]);
+  useEffect(() => {
+    fetch("https://sheltered-beach-60014.herokuapp.com/user")
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  }, []);
 
   if (isLoading) {
     return <Loading></Loading>;
@@ -30,8 +28,13 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user , index) => (
-              <UserRow key={user._id} user={user} index={index} refetch={refetch}></UserRow>
+            {users.map((user, index) => (
+              <UserRow
+                key={user._id}
+                user={user}
+                index={index}
+                refetch={refetch}
+              ></UserRow>
             ))}
           </tbody>
         </table>

@@ -1,85 +1,78 @@
-import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate, useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
-import Loading from '../../Shared/Loading';
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import auth from "../../firebase.init";
+import Loading from "../../Shared/Loading";
 
 const ToolDetails = () => {
+  const navigate = useNavigate();
 
-      const navigate = useNavigate();
+  const [user, loading] = useAuthState(auth);
 
-      const [user, loading] = useAuthState(auth);
+  const { id } = useParams();
 
-      const { id } = useParams();
+  const [tool, setTool] = useState([]);
 
-      const [tool, setTool] = useState([]);
+  useEffect(() => {
+    const url = `https://sheltered-beach-60014.herokuapp.com/tool/${id}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setTool(data));
+  }, []);
 
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
-      useEffect(() => {
-        const url = `http://localhost:5000/tool/${id}`;
-        fetch(url)
-          .then((res) => res.json())
-          .then((data) => setTool(data));
-      }, []);
-
-      if (loading) {
-        return <Loading></Loading>;
-      }
-
-      const handleConfirmOrder = (e) =>{
-        e.preventDefault();
-        const name = e.target.name.value;
-        const email = e.target.email.value;
-        const address = e.target.address.value;
-        const phone = e.target.phone.value;
-        let availableQuantity = e.target.availableQuantity.value;
-        if (availableQuantity < tool.minimumOrder) {
-          return toast.error(
-            `You Cant order less than ${tool.minimumOrder} item`,
-            {
-              position: toast.POSITION.TOP_CENTER,
-            }
-          );
-        } else if (availableQuantity > tool.availableQuantity) {
-          return toast.error(
-            `You Cant order more than ${tool.availableQuantity} item`,
-            {
-              position: toast.POSITION.TOP_CENTER,
-            }
-          );
+  const handleConfirmOrder = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const address = e.target.address.value;
+    const phone = e.target.phone.value;
+    let availableQuantity = e.target.availableQuantity.value;
+    if (availableQuantity < tool.minimumOrder) {
+      return toast.error(`You Cant order less than ${tool.minimumOrder} item`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } else if (availableQuantity > tool.availableQuantity) {
+      return toast.error(
+        `You Cant order more than ${tool.availableQuantity} item`,
+        {
+          position: toast.POSITION.TOP_CENTER,
         }
-        //lets handle price
-        const price = e.target.price.value * availableQuantity;
-        // console.log(address, phone, availableQuantity);
-        let order = { name, email, address, phone, availableQuantity, price };
-        console.log(order);
+      );
+    }
+    //lets handle price
+    const price = e.target.price.value * availableQuantity;
+    // console.log(address, phone, availableQuantity);
+    let order = { name, email, address, phone, availableQuantity, price };
+    console.log(order);
 
-        //now applying the post method
-        const url = `http://localhost:5000/order`;
-        fetch(url, {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(order),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.success) {
-              toast.success(`Order Recieved Successfully for ${tool.name}`, {
-                position: toast.POSITION.TOP_CENTER,
-              });
-              navigate(`/purchase`);
-            } 
-            else {
-              return toast.error(`You have already placed order for ${tool.name}`, {
-                position: toast.POSITION.TOP_CENTER,
-              });
-            }
+    //now applying the post method
+    const url = `https://sheltered-beach-60014.herokuapp.com/order`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          toast.success(`Order Recieved Successfully for ${tool.name}`, {
+            position: toast.POSITION.TOP_CENTER,
           });
-      }
-
+          navigate(`/purchase`);
+        } else {
+          return toast.error(`You have already placed order for ${tool.name}`, {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        }
+      });
+  };
 
   return (
     <div>
@@ -111,7 +104,8 @@ const ToolDetails = () => {
           <div className="flex justify-center items-center pt-6 pl-10 pr-2">
             <div className="container mx-auto pb-16">
               <h2 className="text-3xl mb-6">
-                Confirm Your Order Here For : <span className='font-bold text-green-700'>{tool.name}</span>
+                Confirm Your Order Here For :{" "}
+                <span className="font-bold text-green-700">{tool.name}</span>
               </h2>
               <form onSubmit={handleConfirmOrder}>
                 <div>
@@ -172,7 +166,9 @@ const ToolDetails = () => {
                   </label>
                   <input
                     type="number"
-                    placeholder={" Minimum orderable quantity is " + tool.minimumOrder} 
+                    placeholder={
+                      " Minimum orderable quantity is " + tool.minimumOrder
+                    }
                     name="availableQuantity"
                     class="input input-bordered input-primary w-full max-w-xs text-accent font-bold "
                   />

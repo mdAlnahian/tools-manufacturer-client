@@ -4,9 +4,11 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link , NavLink } from 'react-router-dom';
 import auth from '../firebase.init';
 
+
 const Navbar = () => {
   const [user] = useAuthState(auth);
   // console.log(user);
+  
 
     const handleSignOut = () => {
       signOut(auth);

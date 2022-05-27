@@ -6,7 +6,7 @@ const Purchase = () => {
 
   useEffect(() => {
     // fetch('tools.json')
-    fetch("http://localhost:5000/tool")
+    fetch("https://sheltered-beach-60014.herokuapp.com/tool")
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
