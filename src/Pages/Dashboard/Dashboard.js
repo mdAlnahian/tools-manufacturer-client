@@ -21,12 +21,16 @@ const Dashboard = () => {
             <label for="my-drawer-2" class="drawer-overlay"></label>
             <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
               {/* <!-- Sidebar content here --> */}
-              { admin ||  <li className="mb-2">
-                <NavLink to="/dashboard/myorder">My Order</NavLink>
-              </li>}
-             { admin || <li className="mb-2">
-                <NavLink to="/dashboard/review">My Review</NavLink>
-              </li>}
+              {admin || (
+                <li className="mb-2">
+                  <NavLink to="/dashboard/myorder">My Order</NavLink>
+                </li>
+              )}
+              {admin || (
+                <li className="mb-2">
+                  <NavLink to="/dashboard/review">My Review</NavLink>
+                </li>
+              )}
               <li className="mb-2">
                 <Link to="/dashboard">My profile</Link>
               </li>
@@ -43,6 +47,11 @@ const Dashboard = () => {
               {admin && (
                 <li className="mb-2">
                   <NavLink to="/dashboard/allorder">All Orders </NavLink>
+                </li>
+              )}
+              {admin && (
+                <li className="mb-2">
+                  <NavLink to="/dashboard/manageitem">Manage Items</NavLink>
                 </li>
               )}
             </ul>

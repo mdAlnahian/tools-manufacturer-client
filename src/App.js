@@ -22,6 +22,7 @@ import Portfolio from './Pages/Portfolio';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import AllOrder from './Pages/Dashboard/AllOrder';
 import RequireAdmin from './Pages/Login/RequireAdmin';
+import ManageItem from './Pages/Dashboard/ManageItem';
 
 
 function App() {
@@ -75,6 +76,14 @@ function App() {
             element={
               <RequireAdmin>
                 <AllOrder></AllOrder>
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageitem"
+            element={
+              <RequireAdmin>
+                <ManageItem></ManageItem>
               </RequireAdmin>
             }
           ></Route>
