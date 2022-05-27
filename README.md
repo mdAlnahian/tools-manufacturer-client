@@ -1,4 +1,19 @@
-# Getting Started with Create React App
+# BigBros | Limited.
+* This is a mern stack project for Big|Bros Limited. which is a car product manufacturar where client and admin both have different role.
+## Live Site Link
+(https://big-bros-limited.web.app/)
+
+## FrameWork and Functionality
+* React Js
+* Javascript
+* tailwind css
+* daisy ui
+* Firebase
+* Mongodb
+* Heroku
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
