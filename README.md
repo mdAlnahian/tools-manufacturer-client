@@ -3,15 +3,23 @@
 ## Live Site Link
 (https://big-bros-limited.web.app/)
 
-## FrameWork and Functionality
+## Functionality
 * React Js
 * Javascript
 * tailwind css
 * daisy ui
 * Firebase
 * Mongodb
-* Heroku
-
+* Heroku 
+## Features
+* A user can register first then further he/she can log in
+* A user can book any order from the existing product
+* User can see the order he booked on dashboard
+* User can delete any pending order
+* In Admin role , An admin can Mange every order
+* Admin can add a new item 
+* Admin can delete any existing product
+* Admin can make any user to admin 
 
 ## Getting Started with Create React App
 
