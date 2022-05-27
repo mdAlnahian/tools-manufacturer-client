@@ -3,7 +3,7 @@ import React from "react";
 const Portfolio = () => {
   return (
     <div className="flex justify-center items-center bg-orange-200 pb-24">
-      <div className="pt-24 w-3/4 lg:w-2/5 mx-auto">
+      <div className="pt-24 w-3/4 lg:w-2/5 mx-auto px-12">
         <h1 className="text-3xl pb-6">PortFolio Section!!</h1>
         <div className="bg-base-200">
           <hr className="w-full h-2 mb-6 rounded" />
