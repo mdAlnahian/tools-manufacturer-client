@@ -8,19 +8,23 @@ const MyOrder = () => {
       const [user] = useAuthState(auth);
 
       const [myOrders , setMyOrders] = useState([]);
+      
 
       useEffect(()=>{
         if(user){
-            fetch("http://localhost:5000/order",{
-                method:'GET',
-                headers:{
-                    'content-type':'application/json'
-                }
+          console.log(user.email);
+             fetch(`http://localhost:5000/order`, { 
+            // fetch(`http://localhost:5000/order?email=${user.email}`, {
+              // method: "GET",
+              // headers: {
+              //   "content-type": "application/json",
+              //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              // },
             })
-            .then(res => res.json())
-            .then(data => setMyOrders(data))
+              .then((res) => res.json())
+              .then((data) => setMyOrders(data));
         }
-      },[]);
+      },[user]);
 
       const { id } = useParams();
 
