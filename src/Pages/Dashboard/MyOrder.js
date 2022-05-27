@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const MyOrder = () => {
@@ -39,6 +40,7 @@ const MyOrder = () => {
             .then(data => {
               console.log(data);
               const rest = myOrders.filter((item) => item._id !== id);
+              toast.success('Order Canceled for One Product')
               setMyOrders(rest);
             });
           }

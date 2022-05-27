@@ -36,7 +36,7 @@ const Dashboard = () => {
               </li>
               {admin && (
                 <li className="mb-2">
-                  <NavLink to="/dashboard/user">Users</NavLink>
+                  <NavLink to="/dashboard/user">Make Admin</NavLink>
                 </li>
               )}
               {admin && (

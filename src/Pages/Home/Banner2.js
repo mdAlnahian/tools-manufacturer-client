@@ -1,5 +1,5 @@
 import React from 'react';
-import bg from "./bg.png";
+import img2 from "./img2.png";
 
 const Banner2 = () => {
     return (
@@ -8,8 +8,8 @@ const Banner2 = () => {
           <div class="hero bg-orange-300 pt-12">
             <div class="hero-content flex-col lg:flex-row-reverse">
               <img
-                className="sm:w-full lg:max-w-sm rounded-lg shadow-xl"
-                src={bg}
+                className="sm:w-full lg:max-w-sm rounded-lg pb-4"
+                src={img2}
                 //   class="max-w-sm rounded-lg"
                 alt="Img"
               />

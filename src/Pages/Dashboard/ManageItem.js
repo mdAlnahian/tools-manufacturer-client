@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const ManageItem = () => {
@@ -25,7 +26,9 @@ const ManageItem = () => {
                     .then(data => {
                        console.log(data);
                        const rest = items.filter((item) => item._id !== id);
+                       toast.success('One Item Deleted')
                       setItems(rest);
+                      
             });
           }
                 }
